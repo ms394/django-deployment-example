@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Static files</title>
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+  <div class="nav">
+    <div class="logo">
+      <img src="../static/images/coffee1.jpg" alt="">
+      <h2 id='logospan'>Music</h2>
+    </div>
+  </div>
+  <div class="boxes">
+      {% if albumrecords %}
+            {% for x in albumrecords %}
+              <div class="box">
+                <a href="{{ x.album_title }}">
+                  <img src="{{x.image}}" alt="">
+                  <span id='musicspan'>{{ x.genre }}</span>
+                  <p>{{ x.album_title }} - {{ x.artist}}</p>
+                </a>
+              </div>
+            {% endfor %}
+      {%else%}
+              <p> No records found </p>
+      {% endif %}
+
+  </div>
+</body>
+</html>
